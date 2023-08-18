@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ayurveda Dosha Quiz</title>
+    <script>
+        function calculateDosha() {
+            var answers = document.querySelectorAll('input[type="radio"]:checked');
+            var countA = 0;
+            var countB = 0;
+            var countC = 0;
+
+            for (var i = 0; i < answers.length; i++) {
+                var answer = answers[i].value;
+                if (answer === 'A') {
+                    countA++;
+                } else if (answer === 'B') {
+                    countB++;
+                } else if (answer === 'C') {
+                    countC++;
+                }
+            }
+           let result = "";
+            if (countA > countB && countA > countC) {
+                result = 'O teu dosha dominante é Vata.';
+            } else if (countB > countA && countB > countC) {
+                result = 'O teu dosha dominante é Pitta.';
+            } else if (countC > countA && countC > countB) {
+                result = 'O teu dosha dominante é Kapha.';
+            } else {
+                result = 'Há um empate entre doshas.<BR>Vata = ' + countA + "<BR>Pitta = " + countB + "<BR>Kapha = " + countC;
+            }
+            document.getElementById('result').innerHTML = "<h2>" + result + "<h2>";
+        }
+    </script>
+</head>
+<body>
+    <h1>Questionário dos Doshas</h1>
+    <form>
+        <h3>Questão 1: Como é o teu corpo?</h3>
+        <input type="radio" name="q1" value="A">Magro e leve<br>
+        <input type="radio" name="q1" value="B">Médio e atlético<br>
+        <input type="radio" name="q1" value="C">Sólido e robusto<br>
+
+        <h3>Questão 2: Como é a tua pele?</h3>
+        <input type="radio" name="q2" value="A">Seca, áspera<br>
+        <input type="radio" name="q2" value="B">Sensivel, avermelhada<br>
+        <input type="radio" name="q2" value="C">Oleosa, suave<br>
+
+        <h3>Questão 3: Como são os teus cabelos?</h3>
+        <input type="radio" name="q3" value="A">Secos, quebradiços<br>
+        <input type="radio" name="q3" value="B">Finos, louros ou ruivos<br>
+        <input type="radio" name="q3" value="C">Groços, óleosos<br>
+
+        <h3>Questão 4: Que tipo de alimentos preferes?</h3>
+        <input type="radio" name="q4" value="A">Leves e secos<br>
+        <input type="radio" name="q4" value="B">Moderamente temperados<br>
+        <input type="radio" name="q4" value="C">Ricos em sabor e textura<br>
+
+        <h3>Questão 5: Como é o teu sono?</h3>
+        <input type="radio" name="q5" value="A">Leve, interrompido<br>
+        <input type="radio" name="q5" value="B">Médio, com sono moderado<br>
+        <input type="radio" name="q5" value="C">Profundo, longo<br>
+
+        <h3>Questão 6: Como é a tua energia ao longo do dia?</h3>
+        <input type="radio" name="q6" value="A">Variável, com picos de energia<br>
+        <input type="radio" name="q6" value="B">Moderada, constante<br>
+        <input type="radio" name="q6" value="C">Estável, com resistencia<br>
+
+        <h3>Questão 7: Como é a tua tolerancia ao stress?</h3>
+        <input type="radio" name="q7" value="A">Ansioso(a), preocupado(a)<br>
+        <input type="radio" name="q7" value="B">Irritável, impaciente<br>
+        <input type="radio" name="q7" value="C">Calmo(a), paciente<br>
+
+        <input type="button" value="Submit" onclick="calculateDosha()">
+    </form>
+    <div id="result"></div>
+</body>
+</html>
